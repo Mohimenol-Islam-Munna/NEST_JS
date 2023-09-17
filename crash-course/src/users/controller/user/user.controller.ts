@@ -1,4 +1,15 @@
-import { Body, Controller, Get, Post, Req, Res } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  Query,
+  Req,
+  Res,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 import { Request, Response } from 'express';
 import { UserDto } from 'src/users/dtos/user.dto';
 
@@ -18,6 +29,7 @@ export class UserController {
   }
 
   @Post('create/express-way')
+  @UsePipes(new ValidationPipe())
   create(@Req() request: Request, @Res() response: Response) {
     const reqBody = request.body;
 
@@ -32,9 +44,30 @@ export class UserController {
   }
 
   @Post('create/nest-way')
+  @UsePipes(new ValidationPipe())
   createUser(@Body() body: UserDto) {
     console.log('body :', body);
-
     return 'UserDto success';
+  }
+
+  @Get('get/:id/:find')
+  getSingleUser(@Param('id') id: string, @Param("find") find: string) {
+    return {
+      status: 200,
+      id: id,
+      find: find,
+      error: null,
+      message: 'get user successfully!',
+    };
+  }
+
+  @Get('active')
+  getActiveUser(@Query('status') status: string) {
+    return {
+      status: 200,
+      activeStatus: status || null,
+      error: null,
+      message: 'get active user successfully!',
+    };
   }
 }
