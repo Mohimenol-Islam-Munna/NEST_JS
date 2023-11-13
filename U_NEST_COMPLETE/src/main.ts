@@ -6,8 +6,8 @@ class AppController {
   @Get()
   index() {
     return {
-      status: 200,
-      message: "this is home page of our application",
+        status: 200,
+        message: "this is home page of our application"
     };
   }
 }
@@ -25,4 +25,4 @@ async function bootstrap() {
   });
 }
 
-bootstrap();
+bootstrap()
