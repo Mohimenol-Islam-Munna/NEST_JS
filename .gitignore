@@ -298,6 +298,11 @@ FakesAssemblies/
 # Node.js Tools for Visual Studio
 .ntvs_analysis.dat
 node_modules/
+BASIC/node_modules/
+crash-course/node_modules/
+crud/node_modules/
+may-2024/node_modules/
+U_NEST_COMPLETE/node_modules/
 
 # Typescript v1 declaration files
 typings/
