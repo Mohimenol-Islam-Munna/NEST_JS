@@ -10,6 +10,6 @@ import { LoggerMiddleware } from 'src/middlewares/logger.middleware';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer.apply(LoggerMiddleware);
+    consumer.apply(LoggerMiddleware).exclude('/app/test').forRoutes('/app');
   }
 }

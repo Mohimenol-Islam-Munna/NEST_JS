@@ -6,4 +6,9 @@ export class AppController {
   greetings() {
     return 'Welcome to the nest js world';
   }
+
+  @Get('test')
+  test() {
+    return 'Welcome to the nest js world test';
+  }
 }
