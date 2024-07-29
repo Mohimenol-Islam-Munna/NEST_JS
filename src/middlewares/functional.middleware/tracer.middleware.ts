@@ -5,7 +5,7 @@ export const tracerMiddleware = (
   res: Response,
   next: NextFunction,
 ) => {
-  console.log('This is functional middleware');
+  console.log('This is functional global middleware');
 
   next();
 };

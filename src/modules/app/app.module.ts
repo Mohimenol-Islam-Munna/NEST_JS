@@ -1,8 +1,10 @@
 import { MiddlewareConsumer, Module, NestModule } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { ProductModule } from '../product/product.module';
-import { LoggerMiddleware } from 'src/middlewares/class.middleware/logger.middleware';
-import { tracerMiddleware } from 'src/middlewares/functional.middleware/tracer.middleware';
+import {
+  LoggerMiddleware,
+  OtherMiddleware,
+} from 'src/middlewares/class.middleware/logger.middleware';
 
 @Module({
   imports: [ProductModule],
@@ -12,8 +14,8 @@ import { tracerMiddleware } from 'src/middlewares/functional.middleware/tracer.m
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(LoggerMiddleware, tracerMiddleware)
+      .apply(LoggerMiddleware, OtherMiddleware)
       .exclude('/app/test')
-      .forRoutes('/app');
+      .forRoutes('/app', '/products');
   }
 }
