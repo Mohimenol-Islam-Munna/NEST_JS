@@ -11,7 +11,7 @@ export class LoggerMiddleware implements NestMiddleware {
 
 export class OtherMiddleware implements NestMiddleware {
   use(req: Request, res: Response, next: NextFunction) {
-    console.log('nest js class based other middleware');
+    console.log('nest js class based other middleware ');
 
     next();
   }

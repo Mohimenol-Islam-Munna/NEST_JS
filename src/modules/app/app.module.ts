@@ -16,6 +16,6 @@ export class AppModule implements NestModule {
     consumer
       .apply(LoggerMiddleware, OtherMiddleware)
       .exclude('/app/test')
-      .forRoutes('/app', '/products');
+      .forRoutes('/app');
   }
 }

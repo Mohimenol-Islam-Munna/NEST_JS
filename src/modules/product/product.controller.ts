@@ -7,6 +7,7 @@ import {
   ParseIntPipe,
   Post,
   Put,
+  UseGuards,
   UsePipes,
   ValidationPipe,
 } from '@nestjs/common';
@@ -17,12 +18,16 @@ import {
 } from './dtos/create.product.dto';
 import { CreateProductPipe } from './pipes/create.product.pipe';
 import { UpdateProductDto } from './dtos/update.product.dto';
+import { RoleGuard } from 'src/guards/role.guard';
+import { Roles } from 'src/decorators/roles.decorator';
 
 @Controller('/products')
 export class ProductController {
   constructor(private productService: ProductService) {}
 
   @Get('welcome')
+  @Roles(['admin', 'user'])
+  @UseGuards(RoleGuard)
   greetings() {
     return this.productService.greeting();
   }
